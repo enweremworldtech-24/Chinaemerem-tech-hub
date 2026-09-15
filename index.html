@@ -1,1 +1,994 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Chinaemerem Tech Hub</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+  background:#f4f8fc;
+  color:#172033;
+}
+
+header{
+  background:#061b3a;
+  color:white;
+  padding:15px 5%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
+
+.logo{
+  font-size:21px;
+  font-weight:bold;
+}
+
+.logo small{
+  display:block;
+  font-size:11px;
+  color:#cde8ff;
+  margin-top:3px;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  margin:0 8px;
+  font-size:14px;
+}
+
+nav a:hover{
+  color:#20a9ff;
+}
+
+.hero{
+  background:
+  linear-gradient(90deg,rgba(255,255,255,.96),rgba(255,255,255,.55)),
+  url("https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=1800&q=90")
+  center/cover;
+  min-height:480px;
+  display:flex;
+  align-items:center;
+  padding:55px 6%;
+}
+
+.hero-content{
+  max-width:650px;
+}
+
+.hero h1{
+  font-size:48px;
+  color:#061b3a;
+  margin-bottom:12px;
+}
+
+.hero h1 span{
+  color:#0788e8;
+}
+
+.hero h2{
+  font-size:23px;
+  margin-bottom:15px;
+}
+
+.hero p{
+  font-size:18px;
+  line-height:1.6;
+  margin-bottom:22px;
+}
+
+.btn{
+  display:inline-block;
+  padding:13px 21px;
+  background:#0788e8;
+  color:white;
+  text-decoration:none;
+  border-radius:7px;
+  font-weight:bold;
+  margin:4px;
+  border:none;
+  cursor:pointer;
+}
+
+.btn:hover{
+  opacity:.85;
+}
+
+.call{
+  background:#13a653;
+}
+
+section{
+  padding:55px 5%;
+}
+
+.title{
+  text-align:center;
+  font-size:31px;
+  color:#061b3a;
+  margin-bottom:30px;
+}
+
+.categories{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:15px;
+  max-width:1100px;
+  margin:auto;
+}
+
+.category{
+  background:white;
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 4px 15px rgba(0,0,0,.09);
+  text-align:center;
+  transition:.25s;
+}
+
+.category:hover{
+  transform:translateY(-5px);
+}
+
+.category img{
+  width:100%;
+  height:120px;
+  object-fit:cover;
+}
+
+.category h3{
+  padding:13px 5px;
+  color:#061b3a;
+}
+
+.product-section{
+  background:#eef5fb;
+}
+
+.search-box{
+  max-width:700px;
+  margin:0 auto 30px;
+  display:flex;
+  gap:8px;
+}
+
+.search-box input{
+  flex:1;
+  padding:14px;
+  border:1px solid #ccd7e5;
+  border-radius:7px;
+  font-size:16px;
+}
+
+.search-box button{
+  padding:14px 20px;
+  background:#0788e8;
+  color:white;
+  border:none;
+  border-radius:7px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(235px,1fr));
+  gap:22px;
+}
+
+.product{
+  background:white;
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 4px 17px rgba(0,0,0,.1);
+  transition:.25s;
+}
+
+.product:hover{
+  transform:translateY(-4px);
+}
+
+.product img{
+  width:100%;
+  height:210px;
+  object-fit:cover;
+  display:block;
+}
+
+.product-info{
+  padding:18px;
+}
+
+.product-info h3{
+  color:#061b3a;
+  margin-bottom:9px;
+  font-size:19px;
+}
+
+.product-info p{
+  color:#555;
+  font-size:14px;
+  line-height:1.6;
+  margin-bottom:10px;
+}
+
+.price{
+  color:#008b45;
+  font-size:20px;
+  font-weight:bold;
+  margin-bottom:10px;
+}
+
+.order{
+  width:100%;
+  text-align:center;
+}
+
+.payment-message{
+  display:none;
+  max-width:700px;
+  margin:0 auto 20px;
+  padding:12px;
+  background:#e8f6ff;
+  color:#061b3a;
+  border-radius:7px;
+  text-align:center;
+}
+
+.bonus{
+  background:linear-gradient(135deg,#061b3a,#087dcc);
+  color:white;
+  text-align:center;
+}
+
+.bonus h2{
+  font-size:35px;
+  margin-bottom:15px;
+}
+
+.bonus p{
+  max-width:750px;
+  margin:8px auto;
+  font-size:18px;
+  line-height:1.7;
+}
+
+.features{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:20px;
+}
+
+.feature{
+  background:white;
+  padding:28px 20px;
+  border-radius:12px;
+  text-align:center;
+  box-shadow:0 4px 15px rgba(0,0,0,.08);
+}
+
+.feature h3{
+  color:#061b3a;
+  margin-bottom:9px;
+}
+
+.feature p{
+  color:#555;
+  line-height:1.5;
+}
+
+.contact{
+  background:white;
+  text-align:center;
+}
+
+.contact p{
+  margin:14px 0;
+  font-size:18px;
+}
+
+.contact a{
+  color:#087dcc;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+footer{
+  background:#04152e;
+  color:white;
+  text-align:center;
+  padding:28px 15px;
+  line-height:1.7;
+}
+
+@media(max-width:700px){
+
+  header{
+    flex-direction:column;
+  }
+
+  nav{
+    text-align:center;
+  }
+
+  nav a{
+    display:inline-block;
+    margin:5px;
+  }
+
+  .hero{
+    min-height:450px;
+    padding:40px 20px;
+  }
+
+  .hero h1{
+    font-size:36px;
+  }
+
+  .hero h2{
+    font-size:19px;
+  }
+
+  .hero p{
+    font-size:16px;
+  }
+
+  section{
+    padding:42px 4%;
+  }
+
+  .title{
+    font-size:27px;
+  }
+
+  .search-box{
+    flex-direction:column;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">
+    🛒 Chinaemerem Tech Hub
+    <small>Your gateway to smart technology.</small>
+  </div>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#categories">Categories</a>
+    <a href="#products">Products</a>
+    <a href="#bonus">Bonus</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-content">
+    <h1>Chinaemerem <span>Tech Hub</span></h1>
+    <h2>Your gateway to smart technology.</h2>
+
+    <p>
+      Quality laptops, phones, accessories and other
+      technology products for students, businesses,
+      offices and everyday users.
+    </p>
+
+    <a href="#products" class="btn">🛒 Shop Products</a>
+    <a href="tel:09133142249" class="btn call">📞 Call 09133142249</a>
+  </div>
+</section>
+
+<section id="categories">
+  <h2 class="title">Shop by Category</h2>
+
+  <div class="categories">
+
+    <div class="category">
+      <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=700&q=85">
+      <h3>💻 Laptops</h3>
+    </div>
+
+    <div class="category">
+      <img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=700&q=85">
+      <h3>📱 Phones</h3>
+    </div>
+
+    <div class="category">
+      <img src="https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?auto=format&fit=crop&w=700&q=85">
+      <h3>📺 TVs</h3>
+    </div>
+
+    <div class="category">
+      <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=700&q=85">
+      <h3>🎧 Accessories</h3>
+    </div>
+
+    <div class="category">
+      <img src="https://images.unsplash.com/photo-1522083165195-3424ed129620?auto=format&fit=crop&w=700&q=85">
+      <h3>🌀 Fans</h3>
+    </div>
+
+    <div class="category">
+      <img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=700&q=85">
+      <h3>🖥️ Monitors</h3>
+    </div>
+
+    <div class="category">
+      <img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=700&q=85">
+      <h3>📱 Tablets</h3>
+    </div>
+
+    <div class="category">
+      <img src="https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=700&q=85">
+      <h3>💿 DVD Players</h3>
+    </div>
+
+    <div class="category">
+      <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=700&q=85">
+      <h3>⚙️ Other Tech</h3>
+    </div>
+
+  </div>
+</section>
+
+<section class="product-section" id="products">
+
+  <h2 class="title">Featured Products</h2>
+
+  <div class="search-box">
+    <input
+      type="text"
+      id="productSearch"
+      placeholder="Search products..."
+      onkeydown="if(event.key==='Enter') searchProducts()">
+
+    <button onclick="searchProducts()">🔍 Search</button>
+  </div>
+
+  <div id="paymentMessage" class="payment-message"></div>
+
+  <div class="products" id="productList">
+
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?auto=format&fit=crop&w=900&q=85" alt="Dell Latitude 7490">
+      <div class="product-info">
+        <h3>Dell Latitude 7490</h3>
+        <p>
+          Intel Core i5<br>
+          8GB RAM • 256GB SSD<br>
+          14-inch Full HD • Windows
+        </p>
+        <div class="price">₦370,000</div>
+        <a class="btn order" href="javascript:pay(370000,'Dell Latitude 7490')">Pay Now</a>
+        <a class="btn order" href="mailto:enweremworldtech@gmail.com?subject=Dell Latitude 7490 Order">Ask a Question</a>
+      </div>
+    </div>
+
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=900&q=85" alt="HP EliteBook">
+      <div class="product-info">
+        <h3>HP EliteBook</h3>
+        <p>
+          Business laptop<br>
+          Intel Core processor<br>
+          SSD storage • Windows
+        </p>
+        <div class="price">₦450,000</div>
+        <a class="btn order" href="javascript:pay(450000,'HP EliteBook')">Pay Now</a>
+        <a class="btn order" href="mailto:enweremworldtech@gmail.com?subject=HP EliteBook Inquiry">Ask a Question</a>
+      </div>
+    </div>
+
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1484788984921-03950022c9ef?auto=format&fit=crop&w=900&q=85" alt="Lenovo ThinkPad">
+      <div class="product-info">
+        <h3>Lenovo ThinkPad</h3>
+        <p>
+          Reliable business laptop<br>
+          Intel processor<br>
+          SSD • Windows
+        </p>
+        <div class="price">₦420,000</div>
+        <a class="btn order" href="javascript:pay(420000,'Lenovo ThinkPad')">Pay Now</a>
+        <a class="btn order" href="mailto:enweremworldtech@gmail.com?subject=Lenovo ThinkPad Inquiry">Ask a Question</a>
+      </div>
+    </div>
+
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=900&q=90" alt="iPhone 11">
+      <div class="product-info">
+        <h3>iPhone 11</h3>
+        <p>
+          Apple smartphone<br>
+          Dual camera system<br>
+          Face ID • iOS
+        </p>
+        <div class="price">₦320,000</div>
+        <a class="btn order" href="javascript:pay(320000,'iPhone 11')">Pay Now</a>
+        <a class="btn order" href="mailto:enweremworldtech@gmail.com?subject=iPhone 11 Order">Ask a Question</a>
+      </div>
+    </div>
+
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1591337676887-a217a6970a8a?auto=format&fit=crop&w=900&q=85" alt="iPhone 11 Pro Max">
+      <div class="product-info">
+        <h3>iPhone 11 Pro Max</h3>
+        <p>
+          Apple smartphone<br>
+          Triple camera system<br>
+          Face ID • iOS
+        </p>
+        <div class="price">₦480,000</div>
+        <a class="btn order" href="javascript:pay(480000,'iPhone 11 Pro Max')">Pay Now</a>
+        <a class="btn order" href="mailto:enweremworldtech@gmail.com?subject=iPhone 11 Pro Max Order">Ask a Question</a>
+      </div>
+    </div>
+
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?auto=format&fit=crop&w=900&q=85" alt="Samsung Galaxy S23 Ultra">
+      <div class="product-info">
+        <h3>Samsung Galaxy S23 Ultra 256GB</h3>
+        <p>
+          Android smartphone<br>
+          High-quality display<br>
+          Modern camera system
+        </p>
+        <div class="price">₦750,000</div>
+        <a class="btn order" href="javascript:pay(750000,'Samsung Galaxy S23 Ultra 256GB')">Pay Now</a>
+        <a class="btn order" href="mailto:enweremworldtech@gmail.com?subject=Samsung Galaxy Order">Ask a Question</a>
+      </div>
+    </div>
+
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?auto=format&fit=crop&w=900&q=85" alt="Smart TV">
+      <div class="product-info">
+        <h3>Smart TVs</h3>
+        <p>
+          Different screen sizes<br>
+          HDMI • USB • Wi-Fi<br>
+          Smart TV options
+        </p>
+        <div class="price">From ₦300,000</div>
+        <a class="btn order" href="javascript:pay(300000,'Smart TV')">Pay Now</a>
+        <a class="btn order" href="mailto:enweremworldtech@gmail.com?subject=Smart TV Order">Ask a Question</a>
+      </div>
+    </div>
+
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=900&q=90" alt="Phone and computer accessories">
+      <div class="product-info">
+        <h3>Phone & Computer Accessories</h3>
+        <p>
+          Chargers<br>
+          Earphones • Cables<br>
+          Cases and other accessories
+        </p>
+        <div class="price">From ₦15,000</div>
+        <a class="btn order" href="javascript:pay(15000,'Phone & Computer Accessories')">Pay Now</a>
+        <a class="btn order" href="mailto:enweremworldtech@gmail.com?subject=Accessories Order">Ask a Question</a>
+      </div>
+    </div>
+
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1522083165195-3424ed129620?auto=format&fit=crop&w=900&q=85" alt="Electric fans">
+      <div class="product-info">
+        <h3>Electric Fans</h3>
+        <p>
+          Standing fans<br>
+          Table fans • Wall fans<br>
+          Different models available
+        </p>
+        <div class="price">From ₦50,000</div>
+        <a class="btn order" href="javascript:pay(50000,'Electric Fans')">Pay Now</a>
+        <a class="btn order" href="mailto:enweremworldtech@gmail.com?subject=Fan Order">Ask a Question</a>
+      </div>
+    </div>
+
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=900&q=85" alt="Computer monitors">
+      <div class="product-info">
+        <h3>Computer Monitors</h3>
+        <p>
+          Full HD options<br>
+          HDMI • Display connectivity<br>
+          Work, school and business
+        </p>
+        <div class="price">From ₦170,000</div>
+        <a class="btn order" href="javascript:pay(170000,'Computer Monitors')">Pay Now</a>
+        <a class="btn order" href="mailto:enweremworldtech@gmail.com?subject=Monitor Order">Ask a Question</a>
+      </div>
+    </div>
+
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=900&q=85" alt="Tablets">
+      <div class="product-info">
+        <h3>Tablets</h3>
+        <p>
+          Large touchscreen<br>
+          Wi-Fi connectivity<br>
+          School and everyday use
+        </p>
+        <div class="price">From ₦150,000</div>
+        <a class="btn order" href="javascript:pay(150000,'Tablets')">Pay Now</a>
+        <a class="btn order" href="mailto:enweremworldtech@gmail.com?subject=Tablet Order">Ask a Question</a>
+      </div>
+    </div>
+
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=900&q=85" alt="DVD players">
+      <div class="product-info">
+        <h3>DVD Players</h3>
+        <p>
+          Home entertainment<br>
+          HDMI • USB options<br>
+          Different models available
+        </p>
+        <div class="price">From ₦65,000</div>
+        <a class="btn order" href="javascript:pay(65000,'DVD Players')">Pay Now</a>
+        <a class="btn order" href="mailto:enweremworldtech@gmail.com?subject=DVD Player Order">Ask a Question</a>
+      </div>
+    </div>
+
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=900&q=85" alt="Other technology products">
+      <div class="product-info">
+        <h3>Other Technology Products</h3>
+        <p>
+          Computer accessories<br>
+          Electronics and gadgets<br>
+          Ask us about available products
+        </p>
+        <div class="price">From ₦20,000</div>
+        <a class="btn order" href="javascript:pay(20000,'Other Technology Products')">Pay Now</a>
+        <a class="btn order" href="mailto:enweremworldtech@gmail.com?subject=Other Tech Product Order">Ask a Question</a>
+      </div>
+    </div>
+
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?auto=format&fit=crop&w=900&q=85" alt="Printers">
+      <div class="product-info">
+        <h3>Printers</h3>
+        <p>
+          Home and office printers<br>
+          Different models available<br>
+          Ask about available options
+        </p>
+        <div class="price">From ₦120,000</div>
+        <a class="btn order" href="javascript:pay(120000,'Printers')">Pay Now</a>
+        <a class="btn order" href="mailto:enweremworldtech@gmail.com?subject=Printer Order">Ask a Question</a>
+      </div>
+    </div>
+
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1601944177325-f8867652837f?auto=format&fit=crop&w=900&q=85" alt="Projectors">
+      <div class="product-info">
+        <h3>Projectors</h3>
+        <p>
+          Presentation and entertainment<br>
+          Different display options<br>
+          Ask about available models
+        </p>
+        <div class="price">From ₦180,000</div>
+        <a class="btn order" href="javascript:pay(180000,'Projectors')">Pay Now</a>
+        <a class="btn order" href="mailto:enweremworldtech@gmail.com?subject=Projector Order">Ask a Question</a>
+      </div>
+    </div>
+
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=900&q=85" alt="UPS and power backup">
+      <div class="product-info">
+        <h3>UPS & Power Backup</h3>
+        <p>
+          Power backup solutions<br>
+          Different capacities available<br>
+          For home and office use
+        </p>
+        <div class="price">From ₦85,000</div>
+        <a class="btn order" href="javascript:pay(85000,'UPS & Power Backup')">Pay Now</a>
+        <a class="btn order" href="mailto:enweremworldtech@gmail.com?subject=UPS Order">Ask a Question</a>
+      </div>
+    </div>
+
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=900&q=85" alt="Speakers">
+      <div class="product-info">
+        <h3>Speakers</h3>
+        <p>
+          Audio speakers<br>
+          Different sizes and models<br>
+          Home and entertainment use
+        </p>
+        <div class="price">From ₦35,000</div>
+        <a class="btn order" href="javascript:pay(35000,'Speakers')">Pay Now</a>
+        <a class="btn order" href="mailto:enweremworldtech@gmail.com?subject=Speaker Order">Ask a Question</a>
+      </div>
+    </div>
+
+    <div class="product">
+      <img src="https://static.tp-link.com/upload/image-header/overview_01_normal_20221213023443e.jpg" alt="Wi-Fi routers">
+      <div class="product-info">
+        <h3>Wi-Fi Routers</h3>
+        <p>
+          Wireless internet connectivity<br>
+          Different speeds available<br>
+          Home and office options
+        </p>
+        <div class="price">From ₦30,000</div>
+        <a class="btn order" href="javascript:pay(30000,'Wi-Fi Routers')">Pay Now</a>
+        <a class="btn order" href="mailto:enweremworldtech@gmail.com?subject=Wi-Fi Router Order">Ask a Question</a>
+      </div>
+    </div>
+
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=900&q=85" alt="Keyboards">
+      <div class="product-info">
+        <h3>Keyboards</h3>
+        <p>
+          Computer keyboards<br>
+          Wired and wireless options<br>
+          Different models available
+        </p>
+        <div class="price">From ₦15,000</div>
+        <a class="btn order" href="javascript:pay(15000,'Keyboards')">Pay Now</a>
+        <a class="btn order" href="mailto:enweremworldtech@gmail.com?subject=Keyboard Order">Ask a Question</a>
+      </div>
+    </div>
+
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1527814050087-3793815479db?auto=format&fit=crop&w=900&q=85" alt="Computer mouse">
+      <div class="product-info">
+        <h3>Computer Mouse</h3>
+        <p>
+          Wired and wireless options<br>
+          Comfortable computer control<br>
+          Different models available
+        </p>
+        <div class="price">From ₦8,000</div>
+        <a class="btn order" href="javascript:pay(8000,'Computer Mouse')">Pay Now</a>
+        <a class="btn order" href="mailto:enweremworldtech@gmail.com?subject=Mouse Order">Ask a Question</a>
+      </div>
+    </div>
+
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=900&q=85" alt="Hard drives and SSDs">
+      <div class="product-info">
+        <h3>Hard Drives & SSDs</h3>
+        <p>
+          Storage solutions<br>
+          Different capacities available<br>
+          For computers and laptops
+        </p>
+        <div class="price">From ₦35,000</div>
+        <a class="btn order" href="javascript:pay(35000,'Hard Drives & SSDs')">Pay Now</a>
+        <a class="btn order" href="mailto:enweremworldtech@gmail.com?subject=Hard Drive or SSD Order">Ask a Question</a>
+      </div>
+    </div>
+
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=900&q=85" alt="Flash drives">
+      <div class="product-info">
+        <h3>Flash Drives</h3>
+        <p>
+          Portable storage<br>
+          Different capacities available<br>
+          Easy file transfer
+        </p>
+        <div class="price">From ₦7,000</div>
+        <a class="btn order" href="javascript:pay(7000,'Flash Drives')">Pay Now</a>
+        <a class="btn order" href="mailto:enweremworldtech@gmail.com?subject=Flash Drive Order">Ask a Question</a>
+      </div>
+    </div>
+
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?auto=format&fit=crop&w=900&q=85" alt="Webcams">
+      <div class="product-info">
+        <h3>Webcams</h3>
+        <p>
+          Video calling and meetings<br>
+          USB connectivity<br>
+          Different models available
+        </p>
+        <div class="price">From ₦25,000</div>
+        <a class="btn order" href="javascript:pay(25000,'Webcams')">Pay Now</a>
+        <a class="btn order" href="mailto:enweremworldtech@gmail.com?subject=Webcam Order">Ask a Question</a>
+      </div>
+    </div>
+
+    <div class="product">
+      <img src="https://www.macma.de/media/61/94/7a/1697004427/3149806_1.jpg_image_02_3149806.jpg" alt="Power Bank">
+      <div class="product-info">
+        <h3>Power Banks</h3>
+        <p>
+          Portable charging<br>
+          Fast charging options<br>
+          Different capacities available
+        </p>
+        <div class="price">From ₦18,000</div>
+        <a class="btn order" href="javascript:pay(18000,'Power Bank')">Pay Now</a>
+        <a class="btn order" href="mailto:enweremworldtech@gmail.com?subject=Power Bank Order">Ask a Question</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="bonus" id="bonus">
+  <h2>🎉 Earn ₦20,000 Bonus</h2>
+
+  <p>
+    Bring a customer to Chinaemerem Tech Hub and earn
+    <strong>₦20,000</strong> when the customer completes
+    a qualifying purchase and payment is confirmed.
+  </p>
+
+  <p>
+    Tell the customer your promoter name so we can correctly
+    track your referral.
+  </p>
+</section>
+
+<section>
+  <h2 class="title">Why Choose Chinaemerem Tech Hub?</h2>
+
+  <div class="features">
+
+    <div class="feature">
+      <h3>⭐ Quality Products</h3>
+      <p>We offer laptops, phones, accessories and other technology products.</p>
+    </div>
+
+    <div class="feature">
+      <h3>🛒 Easy Ordering</h3>
+      <p>Contact us by phone or email to ask about products and place orders.</p>
+    </div>
+
+    <div class="feature">
+      <h3>📞 Customer Support</h3>
+      <p>Call or email us for product information and assistance.</p>
+    </div>
+
+    <div class="feature">
+      <h3>🚚 Delivery</h3>
+      <p>Delivery arrangements and estimated time are confirmed for each order.</p>
+    </div>
+
+  </div>
+</section>
+
+<section class="contact" id="contact">
+
+  <h2 class="title">Contact Us</h2>
+
+  <p>
+    📞 Call:
+    <a href="tel:09133142249">09133142249</a>
+  </p>
+
+  <p>
+    📧 Email:
+    <a href="mailto:enweremworldtech@gmail.com">enweremworldtech@gmail.com</a>
+  </p>
+
+  <p>
+    📍 Omuma Oru East — Headquarters<br>
+    Omoku, Rivers State — Branch
+  </p>
+
+  <p>
+    Have a question? Contact us through Gmail or email, and we will be happy to help.
+  </p>
+
+  <br>
+
+  <a href="javascript:pay(100,'Chinaemerem Tech Hub Payment')" class="btn">
+    💳 Make a Payment
+  </a>
+
+  <a href="tel:09133142249" class="btn call">
+    📞 Call Chinaemerem Tech Hub
+  </a>
+
+  <a href="mailto:enweremworldtech@gmail.com" class="btn">
+    📧 Send Email
+  </a>
+
+</section>
+
+<footer>
+
+  <strong>Chinaemerem Tech Hub</strong>
+
+  <p>Your gateway to smart technology.</p>
+
+  <p>We offer quality laptops, phones and accessories.</p>
+
+  <p>© 2026 Chinaemerem Tech Hub. All rights reserved.</p>
+
+</footer>
+
+<script>
+function searchProducts(){
+
+  let input=document
+    .getElementById("productSearch")
+    .value
+    .toLowerCase()
+    .trim();
+
+  let products=document.querySelectorAll("#productList .product");
+
+  products.forEach(function(product){
+
+    let text=product.innerText.toLowerCase();
+
+    if(input==="" || text.includes(input)){
+      product.style.display="";
+    }else{
+      product.style.display="none";
+    }
+
+  });
+}
+
+function addField(form,name,value){
+
+  let input=document.createElement("input");
+
+  input.type="hidden";
+  input.name=name;
+  input.value=value;
+
+  form.appendChild(input);
+}
+
+function pay(amount,productName){
+
+  let message=document.getElementById("paymentMessage");
+
+  message.style.display="block";
+  message.innerText="Opening secure payment for "+productName+"...";
+
+  let form=document.createElement("form");
+
+  form.method="POST";
+  form.action="https://checkout.flutterwave.com/v3/hosted/pay";
+  form.target="_self";
+
+  addField(
+    form,
+    "public_key",
+    "FLWPUBK-d12173beb071a7a5336fe6d79b21215b-X"
+  );
+
+  addField(
+    form,
+    "tx_ref",
+    "CTH-"+Date.now()+"-"+Math.floor(Math.random()*1000000)
+  );
+
+  addField(form,"amount",amount);
+  addField(form,"currency","NGN");
+  addField(form,"payment_options","card,banktransfer,ussd");
+
+  addField(
+    form,
+    "redirect_url",
+    "https://enweremworldtech-24.github.io/Chinaemerem
